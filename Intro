@@ -1,9 +1,42 @@
-Checking for super user
-UID is an important environment variable that can be used to check whether the current
-script has been run as a root user or regular user. For example:
+# Checking for super user
+# UID is an important environment variable that can be used to check whether the current
+# script has been run as a root user or regular user. For example:
+
+
 If [ $UID -ne 0 ]; then
  echo Non root user. Please run as root.
 else
  echo Root user
 fi
 The UID value for the root user is 0
+
+# Math with the shell
+# The Bash shell environment can perform basic arithmetic operations using the commands
+# let, (( )), and [].
+
+#!/bin/bash
+no1=4;
+no2=5;
+
+# The let command can be used to perform basic operations directly. While using
+# let, we use variable names without the $ prefix, for example:
+
+let result=no1+no2
+echo $result
+
+    #increment operation:
+    $ let no1++
+
+    #decrement operation:
+    $ let no1--
+
+    # shorthands:
+    let no+=6
+    let no-=6
+
+# The [] operator can be used in the same way as the let command as follows:
+
+result=$[no1 + no2 ]
+
+# Using the $ prefix inside [] operators are legal, for example:
+result=$[ $no1 + 5 ]
